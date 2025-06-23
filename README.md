@@ -1,29 +1,22 @@
-# ssammubot-web
+# 쌈무봇 웹
 
-This template should help get you started developing with Vue 3 in Vite.
+메이플스토리 API를 이용한 채팅 봇
 
-## Recommended IDE Setup
+## URL
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+[쌈무봇 Web](https://smweb.mukho.r-e.kr)
 
-## Customize configuration
+## 기술 스택
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+### 클라이언트
 
-## Project Setup
+- TypeScript, Vue.js
+- OCI, Nginx
 
-```sh
-npm install
-```
+### 서버
 
-### Compile and Hot-Reload for Development
+[쌈무봇 Github](https://github.com/mukhoplus/ssammubot)
 
-```sh
-npm run dev
-```
+## 이미지
 
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+![쌈무봇 웹](https://github.com/user-attachments/assets/4268aaa6-c750-46e5-a72d-3d30b6696f03)
