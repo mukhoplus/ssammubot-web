@@ -19,13 +19,23 @@ export const fetchCommand = async (
       info: "/nexon/info",
       history: "/nexon/history",
     };
-
     let url = `${API_BASE}${endpoints[command]}`;
-    if (param) {
+    if (param && command !== "vs") {
       url += `?characterName=${encodeURIComponent(param)}`;
     }
 
-    const response = await fetch(url);
+    const response = await fetch(
+      url,
+      command !== "vs"
+        ? null
+        : {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ options: param.split(",") }),
+          }
+    );
     if (!response.ok) throw new Error("API 서버 오류");
 
     const data: ApiResponse = await response.json();
