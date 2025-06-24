@@ -6,12 +6,14 @@
 
 [쌈무봇 Web](https://smweb.mukho.r-e.kr)
 
+- Web, Mobile Web, Progressive Web App 지원
+
 ## 기술 스택
 
 ### 클라이언트
 
 - TypeScript, Vue.js
-- OCI, Nginx
+- OCI, Nginx, Docker, Jenkins
 
 ### 서버
 
