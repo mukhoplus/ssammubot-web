@@ -62,12 +62,13 @@ const handleKeyDown = (e: KeyboardEvent) => {
       <span v-html="output"></span>
     </div>
     <div class="input-line">
-      <span class="prompt">user@maple ~ %</span>
+      <span class="prompt">[~/maple]$</span>
       <input
         v-model="input"
         @keyup.enter="submitCommand"
         @keydown="handleKeyDown"
         class="command-input"
+        id="input"
         autofocus
         placeholder="명령어를 입력하세요..."
       />
@@ -91,6 +92,15 @@ const handleKeyDown = (e: KeyboardEvent) => {
   color: #4ec9b0;
   margin-right: 8px;
   font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .prompt {
+    color: #4ec9b0;
+    margin-right: 8px;
+    font-weight: bold;
+    font-size: small;
+  }
 }
 
 .command-input {
