@@ -82,7 +82,7 @@ const handleKeyDown = (e: KeyboardEvent) => {
   color: #c0c0c0;
   font-family: "Consolas", monospace;
   padding: 20px;
-  height: 80vh;
+  height: 70vh;
   overflow-y: auto;
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
@@ -95,6 +95,10 @@ const handleKeyDown = (e: KeyboardEvent) => {
 }
 
 @media (max-width: 768px) {
+  .terminal {
+    height: 60vh;
+  }
+
   .prompt {
     color: #4ec9b0;
     margin-right: 8px;

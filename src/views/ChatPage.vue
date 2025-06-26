@@ -39,7 +39,7 @@ const currentYear = computed(() => new Date().getFullYear());
 <style scoped>
 .chat-container {
   max-width: 800px;
-  margin: 40px auto;
+  margin: 0px auto;
   padding: 20px;
   background: #121212;
   border-radius: 10px;
