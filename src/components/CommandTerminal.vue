@@ -4,7 +4,7 @@ import { executeCommand } from "@/utils/commandHandler";
 
 const input = ref("");
 const outputs = ref<string[]>([
-  "쌈무봇에 오신 것을 환영합니다. 도움말 또는 ? 입력시 명령어 목록 확인",
+  "쌈무봇에 오신 것을 환영합니다.\n>> 명령어 목록: 도움말 또는 ?",
 ]);
 const commandHistory = ref<string[]>([]);
 let historyIndex = -1;
@@ -81,7 +81,7 @@ const handleKeyDown = (e: KeyboardEvent) => {
   background-color: #1e1e1e;
   color: #c0c0c0;
   font-family: "Consolas", monospace;
-  padding: 20px;
+  padding: 10px;
   height: 70vh;
   overflow-y: auto;
   border-radius: 8px;

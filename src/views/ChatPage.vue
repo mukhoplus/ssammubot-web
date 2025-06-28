@@ -2,7 +2,12 @@
 import CommandTerminal from "@/components/CommandTerminal.vue";
 import { computed } from "vue";
 
-const currentYear = computed(() => new Date().getFullYear());
+const startYear = 2025;
+const currentYear = new Date().getFullYear();
+
+const copyrightYear = computed(() =>
+  currentYear === startYear ? `${startYear}` : `${startYear} - ${currentYear}`
+);
 </script>
 
 <template>
@@ -13,7 +18,7 @@ const currentYear = computed(() => new Date().getFullYear());
     <CommandTerminal />
     <div class="footer">
       <p>
-        Copyright © 2025 - {{ currentYear }}
+        Copyright © {{ copyrightYear }}
         <a
           href="https://github.com/mukhoplus"
           target="_blank"
