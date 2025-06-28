@@ -42,7 +42,7 @@ export const fetchCommand = async (
 
     if (command === "help") {
       const webOnlyHelp =
-        "★ 웹 버전에서는 명령어 앞에 /을 작성하지 않아도 사용 가능합니다.";
+        "★ 웹 버전에서는 명령어 앞에 /을 작성하지 않아도 사용 가능합니다.\n문의: 카카오톡 오픈채팅 - 쌈무는채원";
 
       return `${data.message}\n\n${webOnlyHelp}`;
     }
