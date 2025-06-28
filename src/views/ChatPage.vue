@@ -51,6 +51,12 @@ const copyrightYear = computed(() =>
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
 }
 
+@media (min-width: 768px) {
+  .chat-container {
+    width: 100%;
+  }
+}
+
 .header {
   text-align: center;
   margin-bottom: 20px;
