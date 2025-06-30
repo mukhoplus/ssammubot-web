@@ -97,6 +97,6 @@ export const executeCommand = async (input: string): Promise<string> => {
       return "카카오톡 오픈채팅 - 쌈무는채원";
 
     default:
-      return `알 수 없는 명령어: ${command}. 도움말(?) 입력시 명령어 목록 확인`;
+      return `알 수 없는 명령어: ${command}.\n>> 명령어 목록: 도움말 또는 ?`;
   }
 };
