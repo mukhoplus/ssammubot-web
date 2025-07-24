@@ -23,12 +23,17 @@ export const executeCommand = async (input: string): Promise<string> => {
     case "/삼무":
     case "/ㅆㅁ":
     case "/ㅅㅁ":
-    case "/ㅎㅇ":
     case "쌈무":
     case "삼무":
     case "ㅆㅁ":
     case "ㅅㅁ":
+    case "하이":
     case "ㅎㅇ":
+    case "안녕":
+    case "안뇽":
+    case "hi":
+    case "무쌈":
+    case "무삼":
       return await fetchCommand("ssammu");
 
     case "/환산":
@@ -82,7 +87,16 @@ export const executeCommand = async (input: string): Promise<string> => {
         ? await fetchCommand("history", args[0])
         : "사용법: 경험치히스토리 [캐릭터명]";
 
+    // Client-side Easter Eggs
+    case "쌈무바보":
+    case "묵호바보":
+    case "바보":
+      return "ㅗ";
+
+    case "문의":
+      return "카카오톡 오픈채팅 - 쌈무는채원";
+
     default:
-      return `알 수 없는 명령어: ${command}. 도움말(?) 입력시 명령어 목록 확인`;
+      return `알 수 없는 명령어: ${command}.\n>> 명령어 목록: 도움말 또는 ?`;
   }
 };
