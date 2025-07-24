@@ -8,6 +8,8 @@
 
 - Web, Mobile Web, Progressive Web App 지원
 
+[NEXON Open API\_쌈무봇 링크](https://openapi.nexon.com/ko/curation-app/200100/)
+
 ## 기술 스택
 
 ### 클라이언트
