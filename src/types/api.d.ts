@@ -12,4 +12,7 @@ export type CommandType =
   | "joa"
   | "dice"
   | "info"
-  | "history";
+  | "history"
+  | "poten"
+  | "symbol"
+  | "abil";

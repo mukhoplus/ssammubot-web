@@ -87,6 +87,32 @@ export const executeCommand = async (input: string): Promise<string> => {
         ? await fetchCommand("history", args[0])
         : "사용법: 경험치히스토리 [캐릭터명]";
 
+    case "/심볼":
+    case "/ㅅㅂ":
+    case "심볼":
+    case "ㅅㅂ":
+      return args[0]
+        ? await fetchCommand("symbol", args[0])
+        : "사용법: 심볼 [캐릭터명]";
+
+    case "/어빌":
+    case "/어빌리티":
+    case "/ㅇㅂ":
+    case "/ㅇㅂㄹㅌ":
+    case "어빌":
+    case "어빌리티":
+    case "ㅇㅂ":
+    case "ㅇㅂㄹㅌ":
+      return args[0]
+        ? await fetchCommand("abil", args[0])
+        : "사용법: 어빌 [캐릭터명]";
+
+    case "/잠재":
+    case "/ㅈㅈ":
+    case "잠재":
+    case "ㅈㅈ":
+      return await fetchCommand("poten");
+
     // Client-side Easter Eggs
     case "쌈무바보":
     case "묵호바보":

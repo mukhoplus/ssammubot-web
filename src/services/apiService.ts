@@ -18,7 +18,11 @@ export const fetchCommand = async (
       dice: "/random/dice",
       info: "/nexon/info",
       history: "/nexon/history",
+      poten: "/basic/poten",
+      symbol: "/nexon/symbol",
+      abil: "/nexon/abil",
     };
+
     let url = `${API_BASE}${endpoints[command]}`;
     if (param && command !== "vs") {
       url += `?characterName=${encodeURIComponent(param)}`;
@@ -47,7 +51,7 @@ export const fetchCommand = async (
       return `${data.message}\n\n${webOnlyHelp}`;
     }
 
-    if (command === "scouter") {
+    if (command === "scouter" || command === "poten") {
       return `<a href="${data.message}" target="_blank" style="color: inherit; text-decoration: none; font-weight: inherit; cursor: pointer;
       ">${data.message}</a>`;
     }
