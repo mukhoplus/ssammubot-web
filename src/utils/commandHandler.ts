@@ -87,6 +87,16 @@ export const executeCommand = async (input: string): Promise<string> => {
         ? await fetchCommand("history", args[0])
         : "사용법: 경험치히스토리 [캐릭터명]";
 
+    case "/레벨업":
+    case "/ㄹㅂㅇ":
+    case "레벨업":
+    case "ㄹㅂㅇ":
+      return args[0]
+        ? args[1]
+          ? await fetchCommand("levelup", args[0], args[1])
+          : await fetchCommand("levelup", args[0])
+        : "사용법: 레벨업 [캐릭터명] ([목표레벨])";
+
     case "/심볼":
     case "/ㅅㅂ":
     case "심볼":
@@ -119,7 +129,20 @@ export const executeCommand = async (input: string): Promise<string> => {
     case "바보":
       return "ㅗ";
 
+    case "/패치":
+    case "/패치노트":
+    case "/ㅍㅊ":
+    case "/ㅍㅊㄴㅌ":
+    case "패치":
+    case "패치노트":
+    case "ㅍㅊ":
+    case "ㅍㅊㄴㅌ":
+      return await fetchCommand("patch");
+
+    case "/문의":
     case "문의":
+    case "/ㅁㅇ":
+    case "ㅁㅇ":
       return "카카오톡 오픈채팅 - 쌈무는채원";
 
     default:

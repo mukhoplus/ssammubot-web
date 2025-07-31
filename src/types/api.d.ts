@@ -15,4 +15,6 @@ export type CommandType =
   | "history"
   | "poten"
   | "symbol"
-  | "abil";
+  | "abil"
+  | "levelup"
+  | "patch";

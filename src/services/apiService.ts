@@ -4,7 +4,8 @@ const API_BASE = "https://smbot.mukho.r-e.kr";
 
 export const fetchCommand = async (
   command: CommandType,
-  param?: string
+  param?: string,
+  param2?: any
 ): Promise<string> => {
   try {
     const endpoints: Record<CommandType, string> = {
@@ -21,11 +22,16 @@ export const fetchCommand = async (
       poten: "/basic/poten",
       symbol: "/nexon/symbol",
       abil: "/nexon/abil",
+      levelup: "/nexon/levelup",
+      patch: "/basic/patch",
     };
 
     let url = `${API_BASE}${endpoints[command]}`;
     if (param && command !== "vs") {
       url += `?characterName=${encodeURIComponent(param)}`;
+    }
+    if (param2 && command === "levelup") {
+      url += `&targetLevel=${encodeURIComponent(param2)}`;
     }
 
     const response = await fetch(
@@ -46,7 +52,7 @@ export const fetchCommand = async (
 
     if (command === "help") {
       const webOnlyHelp =
-        "★ 웹 버전에서는 명령어 앞에 /을 작성하지 않아도 사용 가능합니다.\n문의: 카카오톡 오픈채팅 - 쌈무는채원";
+        "★ 웹 버전에서는 명령어 앞에 /을 작성하지 않아도 사용 가능합니다.\n★ 모바일 환경에서는 인앱 설치를 통해 앱처럼 사용 가능합니다.\n★ 문의: 카카오톡 오픈채팅 - 쌈무는채원";
 
       return `${data.message}\n\n${webOnlyHelp}`;
     }
