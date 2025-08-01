@@ -14,6 +14,6 @@ export default defineConfig({
   },
   server: {
     host: "0.0.0.0",
-    allowedHosts: ["smweb.mukho.r-e.kr"],
+    allowedHosts: ["smweb.mukho.r-e.kr", "ssammubot.vercel.app"],
   },
 });
