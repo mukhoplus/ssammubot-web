@@ -5,6 +5,7 @@
 ## URL
 
 [쌈무봇 Web](https://smweb.mukho.r-e.kr)
+[쌈무봇 Web(Public)](https://ssammubot.vercel.app)
 
 - Web, Mobile Web, Progressive Web App 지원
 
