@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import { SpeedInsights } from "@vercel/speed-insights/vue";
 import ChatPage from "@/views/ChatPage.vue";
 </script>
 
 <template>
   <ChatPage />
+  <SpeedInsights />
 </template>
 
 <style>
