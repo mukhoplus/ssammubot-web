@@ -83,9 +83,13 @@ export const executeCommand = async (input: string): Promise<string> => {
     case "/ㄱㅎㅊㅎㅅㅌㄹ":
     case "경험치히스토리":
     case "ㄱㅎㅊㅎㅅㅌㄹ":
+    case "/경험치":
+    case "/ㄱㅎㅊ":
+    case "경험치":
+    case "ㄱㅎㅊ":
       return args[0]
         ? await fetchCommand("history", args[0])
-        : "사용법: 경험치히스토리 [캐릭터명]";
+        : "사용법: 경험치 [캐릭터명]";
 
     case "/레벨업":
     case "/ㄹㅂㅇ":
