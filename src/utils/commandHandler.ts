@@ -127,6 +127,16 @@ export const executeCommand = async (input: string): Promise<string> => {
     case "ㅈㅈ":
       return await fetchCommand("poten");
 
+    case "/플레이리스트":
+    case "플레이리스트":
+    case "/ㅍㄹㅇㄹㅅㅌ":
+    case "ㅍㄹㅇㄹㅅㅌ":
+    case "/플리":
+    case "플리":
+    case "/ㅍㄹ":
+    case "ㅍㄹ":
+      return await fetchCommand("playlist");
+
     // Client-side Easter Eggs
     case "쌈무바보":
     case "묵호바보":
