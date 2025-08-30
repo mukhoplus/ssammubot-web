@@ -17,4 +17,5 @@ export type CommandType =
   | "symbol"
   | "abil"
   | "levelup"
-  | "patch";
+  | "patch"
+  | "playlist";

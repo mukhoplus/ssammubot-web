@@ -24,6 +24,7 @@ export const fetchCommand = async (
       abil: "/nexon/abil",
       levelup: "/nexon/levelup",
       patch: "/basic/patch",
+      playlist: "/random/playlist",
     };
 
     let url = `${API_BASE}${endpoints[command]}`;
@@ -60,6 +61,13 @@ export const fetchCommand = async (
     if (command === "scouter" || command === "poten") {
       return `<a href="${data.message}" target="_blank" style="color: inherit; text-decoration: none; font-weight: inherit; cursor: pointer;
       ">${data.message}</a>`;
+    }
+
+    if (command === "playlist") {
+      const [description, link] = data.message.split(" ");
+
+      return `<a href="${link}" target="_blank" style="color: inherit; text-decoration: none; font-weight: inherit; cursor: pointer;
+      ">${description}</a>`;
     }
 
     return data.message || "No response";
