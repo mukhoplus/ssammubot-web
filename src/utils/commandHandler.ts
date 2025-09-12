@@ -21,12 +21,8 @@ export const executeCommand = async (input: string): Promise<string> => {
 
     case "/쌈무":
     case "/삼무":
-    case "/ㅆㅁ":
-    case "/ㅅㅁ":
     case "쌈무":
     case "삼무":
-    case "ㅆㅁ":
-    case "ㅅㅁ":
     case "하이":
     case "ㅎㅇ":
     case "안녕":
@@ -125,6 +121,10 @@ export const executeCommand = async (input: string): Promise<string> => {
     case "/ㅈㅈ":
     case "잠재":
     case "ㅈㅈ":
+    case "/시뮬":
+    case "/ㅅㅁ":
+    case "시뮬":
+    case "ㅅㅁ":
       return await fetchCommand("poten");
 
     case "/플레이리스트":
