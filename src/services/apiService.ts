@@ -5,7 +5,7 @@ const API_BASE = "https://smbot.mukho.r-e.kr";
 export const fetchCommand = async (
   command: CommandType,
   param?: string,
-  param2?: any
+  param2?: any,
 ): Promise<string> => {
   try {
     const endpoints: Record<CommandType, string> = {
@@ -17,6 +17,7 @@ export const fetchCommand = async (
       class: "/random/class",
       joa: "/basic/joa/text",
       dice: "/random/dice",
+      lotto: "random/lotto",
       info: "/nexon/info",
       history: "/nexon/history",
       poten: "/basic/poten",
@@ -45,7 +46,7 @@ export const fetchCommand = async (
               "Content-Type": "application/json",
             },
             body: JSON.stringify({ options: param.split(",") }),
-          }
+          },
     );
     if (!response.ok) throw new Error("API 서버 오류");
 

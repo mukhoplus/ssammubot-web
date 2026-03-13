@@ -11,6 +11,7 @@ export type CommandType =
   | "class"
   | "joa"
   | "dice"
+  | "lotto"
   | "info"
   | "history"
   | "poten"
