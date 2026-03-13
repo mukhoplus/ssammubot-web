@@ -17,7 +17,7 @@ export const fetchCommand = async (
       class: "/random/class",
       joa: "/basic/joa/text",
       dice: "/random/dice",
-      lotto: "random/lotto",
+      lotto: "/random/lotto",
       info: "/nexon/info",
       history: "/nexon/history",
       poten: "/basic/poten",
