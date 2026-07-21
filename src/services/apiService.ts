@@ -20,12 +20,12 @@ export const fetchCommand = async (
       lotto: "/random/lotto",
       info: "/nexon/info",
       history: "/nexon/history",
-      poten: "/basic/poten",
+      // poten: "/basic/poten",
       symbol: "/nexon/symbol",
       abil: "/nexon/abil",
       levelup: "/nexon/levelup",
       patch: "/basic/patch",
-      playlist: "/random/playlist",
+      // playlist: "/random/playlist",
     };
 
     let url = `${API_BASE}${endpoints[command]}`;
@@ -54,22 +54,23 @@ export const fetchCommand = async (
 
     if (command === "help") {
       const webOnlyHelp =
-        "★ 웹 버전에서는 명령어 앞에 /을 작성하지 않아도 사용 가능합니다.\n★ 모바일 환경에서는 인앱 설치를 통해 앱처럼 사용 가능합니다.\n★ 문의: 카카오톡 오픈채팅 - 쌈무는채원";
+        "★ 명령어 앞에 /을 작성하지 않아도 사용 가능합니다.\n★ 모바일 환경에서는 인앱 설치를 통해 앱처럼 사용 가능합니다.\n★ 문의: 카카오톡 오픈채팅 - 쌈무는채원";
 
       return `${data.message}\n\n${webOnlyHelp}`;
     }
 
-    if (command === "scouter" || command === "poten") {
+    if (command === "scouter") {
+      // || command === "poten") {
       return `<a href="${data.message}" target="_blank" style="color: inherit; text-decoration: none; font-weight: inherit; cursor: pointer;
       ">${data.message}</a>`;
     }
 
-    if (command === "playlist") {
-      const [description, link] = data.message.split(" ");
+    // if (command === "playlist") {
+    //   const [description, link] = data.message.split(" ");
 
-      return `<a href="${link}" target="_blank" style="color: inherit; text-decoration: none; font-weight: inherit; cursor: pointer;
-      ">${description}</a>`;
-    }
+    //   return `<a href="${link}" target="_blank" style="color: inherit; text-decoration: none; font-weight: inherit; cursor: pointer;
+    //   ">${description}</a>`;
+    // }
 
     return data.message || "No response";
   } catch (error) {

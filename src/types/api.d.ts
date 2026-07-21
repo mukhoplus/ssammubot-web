@@ -14,9 +14,9 @@ export type CommandType =
   | "lotto"
   | "info"
   | "history"
-  | "poten"
+  // | "poten"
   | "symbol"
   | "abil"
   | "levelup"
-  | "patch"
-  | "playlist";
+  | "patch";
+// | "playlist";
