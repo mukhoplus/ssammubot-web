@@ -18,5 +18,6 @@ export type CommandType =
   | "symbol"
   | "abil"
   | "levelup"
-  | "patch";
-// | "playlist";
+  | "patch"
+  // | "playlist";
+  | "ring";

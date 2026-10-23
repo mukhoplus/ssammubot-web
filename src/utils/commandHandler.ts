@@ -159,6 +159,16 @@ export const executeCommand = async (input: string): Promise<string> => {
     case "ㅍㅊㄴㅌ":
       return await fetchCommand("patch");
 
+    case "/반지":
+    case "/ㅂㅈ":
+    case "/시드링":
+    case "/ㅅㄷㄹ":
+    case "반지":
+    case "ㅂㅈ":
+    case "시드링":
+    case "ㅅㄷㄹ":
+      return await fetchCommand("ring");
+
     case "/문의":
     case "문의":
     case "/ㅁㅇ":
