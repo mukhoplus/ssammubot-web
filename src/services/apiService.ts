@@ -26,6 +26,7 @@ export const fetchCommand = async (
       levelup: "/nexon/levelup",
       patch: "/basic/patch",
       // playlist: "/random/playlist",
+      ring: "/nexon/ring",
     };
 
     let url = `${API_BASE}${endpoints[command]}`;
