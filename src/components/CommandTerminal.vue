@@ -97,6 +97,7 @@ const handleKeyDown = (e: KeyboardEvent) => {
   max-width: 800px;
   height: 70vh;
   overflow-y: auto;
+  overflow-x: hidden;
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
@@ -136,6 +137,7 @@ const handleKeyDown = (e: KeyboardEvent) => {
   margin-bottom: 12px;
   line-height: 1.5;
   white-space: pre-wrap;
+  word-break: break-all;
 }
 
 .input-line {
