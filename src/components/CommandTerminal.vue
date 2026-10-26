@@ -2,6 +2,8 @@
 import { ref } from "vue";
 import { executeCommand } from "@/utils/commandHandler";
 
+const KEY_COMMANDS = ["/키등록", "/ㅋㄷㄹ", "키등록", "ㅋㄷㄹ"];
+
 const input = ref("");
 const outputs = ref<string[]>([
   "쌈무봇에 오신 것을 환영합니다.\n>> 명령어 목록: 도움말 또는 ?",
@@ -10,15 +12,25 @@ const commandHistory = ref<string[]>([]);
 let historyIndex = -1;
 
 const submitCommand = async () => {
-  if (!input.value.trim()) return;
+  const rawInput = input.value.trim();
+  if (!rawInput) return;
+
+  const [cmd, ...args] = rawInput.split(/\s+/);
+  const isKeyCommand = KEY_COMMANDS.includes(cmd.toLowerCase());
+  const displayInput =
+    isKeyCommand && args.length > 0
+      ? `${cmd} ${args.map((arg) => "*".repeat(arg.length)).join(" ")}`
+      : input.value;
 
   // 명령어 실행
-  outputs.value.push(`> ${input.value}`);
+  outputs.value.push(`> ${displayInput}`);
   const result = await executeCommand(input.value);
   outputs.value.push(result);
 
   // 히스토리 저장
-  commandHistory.value.push(input.value);
+  if (!isKeyCommand) {
+    commandHistory.value.push(input.value);
+  }
   historyIndex = commandHistory.value.length;
 
   // 입력 초기화

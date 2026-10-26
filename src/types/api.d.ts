@@ -20,4 +20,7 @@ export type CommandType =
   | "levelup"
   | "patch"
   // | "playlist";
-  | "ring";
+  | "ring"
+  | "key"
+  | "boss"
+  | "quest";

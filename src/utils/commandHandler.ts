@@ -1,6 +1,18 @@
 import { fetchCommand } from "@/services/apiService";
 import { CommandType } from "@/types/api";
 
+const API_KEY_STORAGE_KEY = "nexon_api_key";
+
+export const getApiKey = (): string | null => {
+  return localStorage.getItem(API_KEY_STORAGE_KEY);
+};
+
+export const setApiKey = (apiKey: string): boolean => {
+  const isUpdate = !!localStorage.getItem(API_KEY_STORAGE_KEY);
+  localStorage.setItem(API_KEY_STORAGE_KEY, apiKey);
+  return isUpdate;
+};
+
 export const parseCommand = (input: string) => {
   const trimmed = input.trim();
   const [command, ...args] = trimmed.split(/\s+/);
@@ -170,6 +182,51 @@ export const executeCommand = async (input: string): Promise<string> => {
       return args[0]
         ? await fetchCommand("ring", args[0])
         : "사용법: 시드링 [캐릭터명]";
+
+    case "/키등록":
+    case "/ㅋㄷㄹ":
+    case "키등록":
+    case "ㅋㄷㄹ": {
+      if (!args[0]) {
+        return "사용법: 키등록 [API_KEY]";
+      }
+      const encryptedKey = await fetchCommand("key", args[0]);
+      if (
+        encryptedKey === "묵호 정신 안차리지" ||
+        encryptedKey === "No response"
+      ) {
+        return encryptedKey;
+      }
+      return setApiKey(encryptedKey)
+        ? "API Key가 수정되었습니다."
+        : "API Key가 등록되었습니다.";
+    }
+
+    case "/보스":
+    case "/ㅂㅅ":
+    case "보스":
+    case "ㅂㅅ": {
+      const apiKey = getApiKey();
+      if (!apiKey) {
+        return "/키등록 명령어를 통해 NEXON Open API에서 발급받은 본인의 API_KEY를 등록해주세요.\n사용법: 키등록 [API_KEY]";
+      }
+      return args[0]
+        ? await fetchCommand("boss", args[0], apiKey)
+        : "사용법: 보스 [캐릭터명]";
+    }
+
+    case "/일퀘":
+    case "/ㅇㅋ":
+    case "일퀘":
+    case "ㅇㅋ": {
+      const apiKey = getApiKey();
+      if (!apiKey) {
+        return "/키등록 명령어를 통해 NEXON Open API에서 발급받은 본인의 API_KEY를 등록해주세요.\n사용법: 키등록 [API_KEY]";
+      }
+      return args[0]
+        ? await fetchCommand("quest", args[0], apiKey)
+        : "사용법: 일퀘 [캐릭터명]";
+    }
 
     case "/문의":
     case "문의":

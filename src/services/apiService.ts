@@ -27,10 +27,13 @@ export const fetchCommand = async (
       patch: "/basic/patch",
       // playlist: "/random/playlist",
       ring: "/nexon/ring",
+      key: "/nexon/key",
+      boss: "/nexon/boss",
+      quest: "/nexon/quest",
     };
 
     let url = `${API_BASE}${endpoints[command]}`;
-    if (param && command !== "vs") {
+    if (param && command !== "vs" && command !== "key") {
       url += `?characterName=${encodeURIComponent(param)}`;
     }
     if (param2 && command === "levelup") {
@@ -39,15 +42,28 @@ export const fetchCommand = async (
 
     const response = await fetch(
       url,
-      command !== "vs"
-        ? null
-        : {
+      command === "vs"
+        ? {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({ options: param.split(",") }),
-          },
+          }
+        : command === "key"
+          ? {
+              method: "POST",
+              headers: {
+                "x-nxopen-api-key": param,
+              },
+            }
+          : command === "boss" || command === "quest"
+            ? {
+                headers: {
+                  "x-nxopen-api-key": param2,
+                },
+              }
+            : null,
     );
     if (!response.ok) throw new Error("API 서버 오류");
 
