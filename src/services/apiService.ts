@@ -30,6 +30,7 @@ export const fetchCommand = async (
       key: "/nexon/key",
       boss: "/nexon/boss",
       quest: "/nexon/quest",
+      sunday: "/nexon/sunday",
     };
 
     let url = `${API_BASE}${endpoints[command]}`;

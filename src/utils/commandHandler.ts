@@ -228,6 +228,16 @@ export const executeCommand = async (input: string): Promise<string> => {
         : "사용법: 일퀘 [캐릭터명]";
     }
 
+    case "/썬데이":
+    case "/ㅆㄷㅇ":
+    case "/선데이":
+    case "/ㅅㄷㅇ":
+    case "썬데이":
+    case "ㅆㄷㅇ":
+    case "선데이":
+    case "ㅅㄷㅇ":
+      return args[0] ? await fetchCommand("sunday", args[0]) : "사용법: 썬데이";
+
     case "/문의":
     case "문의":
     case "/ㅁㅇ":

@@ -23,4 +23,5 @@ export type CommandType =
   | "ring"
   | "key"
   | "boss"
-  | "quest";
+  | "quest"
+  | "sunday";
