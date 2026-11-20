@@ -2,6 +2,17 @@ export interface ApiResponse {
   message: string;
 }
 
+export type CommandOutput =
+  | {
+      type: "text";
+      content: string;
+    }
+  | {
+      type: "link";
+      text: string;
+      url: string;
+    };
+
 export type CommandType =
   | "help"
   | "ssammu"

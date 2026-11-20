@@ -1,12 +1,16 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { executeCommand } from "@/utils/commandHandler";
+import type { CommandOutput } from "@/types/api";
 
 const KEY_COMMANDS = ["/키등록", "/ㅋㄷㄹ", "키등록", "ㅋㄷㄹ"];
 
 const input = ref("");
-const outputs = ref<string[]>([
-  "쌈무봇에 오신 것을 환영합니다.\n>> 명령어 목록: 도움말 또는 ?",
+const outputs = ref<CommandOutput[]>([
+  {
+    type: "text",
+    content: "쌈무봇에 오신 것을 환영합니다.\n>> 명령어 목록: 도움말 또는 ?",
+  },
 ]);
 const commandHistory = ref<string[]>([]);
 let historyIndex = -1;
@@ -23,9 +27,11 @@ const submitCommand = async () => {
       : input.value;
 
   // 명령어 실행
-  outputs.value.push(`> ${displayInput}`);
+  outputs.value.push({ type: "text", content: `> ${displayInput}` });
   const result = await executeCommand(input.value);
-  outputs.value.push(result);
+  outputs.value.push(
+    typeof result === "string" ? { type: "text", content: result } : result,
+  );
 
   // 히스토리 저장
   if (!isKeyCommand) {
@@ -65,13 +71,16 @@ const handleKeyDown = (e: KeyboardEvent) => {
 
 <template>
   <div class="terminal">
-    <div
-      v-for="(output, index) in outputs"
-      :key="index"
-      class="output"
-      :class="{ 'scouter-output': output.includes('scouter-link') }"
-    >
-      <span v-html="output"></span>
+    <div v-for="(output, index) in outputs" :key="index" class="output">
+      <a
+        v-if="output.type === 'link'"
+        :href="output.url"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="output-link"
+        >{{ output.text }}</a
+      >
+      <span v-else>{{ output.content }}</span>
     </div>
     <div class="input-line">
       <span class="prompt">[~/maple]$</span>
@@ -138,6 +147,13 @@ const handleKeyDown = (e: KeyboardEvent) => {
   line-height: 1.5;
   white-space: pre-wrap;
   word-break: break-all;
+}
+
+.output-link {
+  color: inherit;
+  text-decoration: none;
+  font-weight: inherit;
+  cursor: pointer;
 }
 
 .input-line {

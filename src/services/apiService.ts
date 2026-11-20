@@ -1,12 +1,34 @@
-import { ApiResponse, CommandType } from "@/types/api";
+import { ApiResponse, CommandOutput, CommandType } from "@/types/api";
 
 const API_BASE = "https://smbot.mukho.r-e.kr";
+const SCOUTER_ALLOWED_HOSTS = ["maplescouter.com"];
+
+// Create a link output only for HTTPS URLs whose hostname is in allowedHosts.
+const createSafeLink = (
+  rawUrl: string,
+  text: string,
+  allowedHosts: string[],
+): CommandOutput => {
+  let url: URL;
+  try {
+    url = new URL(rawUrl);
+  } catch {
+    // Not a URL (for example, an API error message). Show it as plain text.
+    return { type: "text", content: rawUrl || "No response" };
+  }
+
+  if (url.protocol !== "https:" || !allowedHosts.includes(url.hostname)) {
+    return { type: "text", content: "허용되지 않은 링크입니다." };
+  }
+
+  return { type: "link", text, url: url.href };
+};
 
 export const fetchCommand = async (
   command: CommandType,
   param?: string,
   param2?: any,
-): Promise<string> => {
+): Promise<string | CommandOutput> => {
   try {
     const endpoints: Record<CommandType, string> = {
       help: "/basic/help",
@@ -78,16 +100,19 @@ export const fetchCommand = async (
     }
 
     if (command === "scouter") {
-      // || command === "poten") {
-      return `<a href="${data.message}" target="_blank" style="color: inherit; text-decoration: none; font-weight: inherit; cursor: pointer;
-      ">${data.message}</a>`;
+      return createSafeLink(data.message, data.message, SCOUTER_ALLOWED_HOSTS);
     }
+
+    // if (command === "poten") {
+    //   return createSafeLink(data.message, data.message, [
+    //     "potential-simulator.vercel.app",
+    //   ]);
+    // }
 
     // if (command === "playlist") {
     //   const [description, link] = data.message.split(" ");
 
-    //   return `<a href="${link}" target="_blank" style="color: inherit; text-decoration: none; font-weight: inherit; cursor: pointer;
-    //   ">${description}</a>`;
+    //   return createSafeLink(link, description, ["www.youtube.com"]);
     // }
 
     return data.message || "No response";

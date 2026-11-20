@@ -1,5 +1,5 @@
 import { fetchCommand } from "@/services/apiService";
-import { CommandType } from "@/types/api";
+import { CommandOutput, CommandType } from "@/types/api";
 
 const API_KEY_STORAGE_KEY = "nexon_api_key";
 
@@ -19,7 +19,9 @@ export const parseCommand = (input: string) => {
   return { command, args };
 };
 
-export const executeCommand = async (input: string): Promise<string> => {
+export const executeCommand = async (
+  input: string,
+): Promise<string | CommandOutput> => {
   const { command, args } = parseCommand(input);
 
   switch (command.toLowerCase()) {
@@ -192,6 +194,7 @@ export const executeCommand = async (input: string): Promise<string> => {
       }
       const encryptedKey = await fetchCommand("key", args[0]);
       if (
+        typeof encryptedKey !== "string" ||
         encryptedKey === "묵호 정신 안차리지" ||
         encryptedKey === "No response"
       ) {
