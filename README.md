@@ -4,8 +4,8 @@
 
 ## URL
 
-[쌈무봇 Web](https://smweb.mukho.r-e.kr)
-[쌈무봇 Web(Public)](https://ssammubot.vercel.app)
+[쌈무봇 Web](https://ssammubot.vercel.app)
+[쌈무봇 Web_보조](https://smweb.mukho.r-e.kr)
 
 - Web, Mobile Web, Progressive Web App 지원
 
@@ -16,7 +16,7 @@
 ### 클라이언트
 
 - TypeScript, Vue.js
-- OCI, Nginx, Docker, Jenkins
+- Vercel, OCI, Nginx, Docker, Jenkins
 
 ### 서버
 
